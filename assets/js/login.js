@@ -28,7 +28,7 @@ $(function () {
       username: $("#form_reg [name=username]").val(),
       password: $("#form_reg [name=password]").val(),
     }
-    $.post("http://ajax.frontend.itheima.net/api/reguser", data, (res) => {
+    $.post("/api/reguser", data, (res) => {
       if (res.status !== 0) return alert(res.message)
       layer.msg("注册成功")
       $("#link_login").click()
@@ -38,7 +38,7 @@ $(function () {
   $("#form_login").on("submit", function (e) {
     e.preventDefault()
     let data = $(this).serialize()
-    $.post("http://ajax.frontend.itheima.net/api/login", data, (res) => {
+    $.post("/api/login", data, (res) => {
       layer.msg("登录成功")
       localStorage.setItem("token", res.token)
       setTimeout((location.href = "/index.html"), 1000)
